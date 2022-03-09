@@ -1,0 +1,28 @@
+.floating-button {
+  text-decoration: none;
+  display: inline-block;
+  width: 9vh;
+  height: 2vh;
+  line-height: 1vh;
+  border-radius: 0.5vh;
+  margin: 0.1vh 0.2vh;
+  padding: 0;
+  /* margin: 0; */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1vh;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.1vh;
+  font-weight: 600;
+  color: black;
+  background: rgb(190, 235, 177);
+  box-shadow: 0 0.8vw 1vw rgba(0, 0, 0, .1);
+  transition: .3s;
+  cursor: pointer;
+}
+.floating-button:hover {
+  background: #2EE59D;
+  box-shadow: 0 1.2vw 1.8vw rgba(46, 229, 157, .4);
+  color: white;
+  transform: translateY(-0.2vw);
+}
