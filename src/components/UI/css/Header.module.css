@@ -1,0 +1,9 @@
+.Header {
+  padding: 0.7vh 0 0 0.7vh;
+}
+.mainButtonsBlock {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 2.2vh;
+}

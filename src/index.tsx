@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 
 interface IAction {
   type: string;
@@ -30,9 +31,19 @@ const reducer = (state:IState = defaultState, action:IAction) => {
 }
 const store = createStore(reducer);
 
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <App />,
+//   </Provider>,
+//   document.getElementById('root')
+// );
 ReactDOM.render(
-  <Provider store={store}>
-    <App />,
-  </Provider>,
-  document.getElementById('root')
+  <React.StrictMode>
+    <BrowserRouter>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </BrowserRouter>
+  </React.StrictMode>,
+  document.getElementById('root'),
 );
