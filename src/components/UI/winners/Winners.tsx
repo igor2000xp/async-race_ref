@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import WinnerSlot from "./winer-slot/WinnerSlot";
 // @ts-ignore
-import style from "./Winners.module.css";
+import style from "../css/Winners.module.css";
 import {getWinners} from "../../../dal/WinnersAPI";
 
 interface IWinner {

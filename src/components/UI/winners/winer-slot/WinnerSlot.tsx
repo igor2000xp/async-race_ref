@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 // @ts-ignore
-import styles from "./WinnerSlot.module.css";
+import styles from "../../css/WinnerSlot.module.css";
 import {getCar} from "../../../../dal/GarageAPI";
 
 interface IWinnerSlot {
