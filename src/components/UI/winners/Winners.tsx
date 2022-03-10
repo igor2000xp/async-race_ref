@@ -1,8 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
 import WinnerSlot from "./winer-slot/WinnerSlot";
 // @ts-ignore
 import style from "./Winners.module.css";
+import {getWinners} from "../../../dal/WinnersAPI";
 
 interface IWinner {
     id: number,
@@ -15,10 +15,8 @@ const Winners = () => {
     const [data, setData] = useState<Array<IWinner>>([])
 
     useEffect(() => {
-            axios.get<Array<IWinner>>('http://localhost:3000/winners')
-                .then(res =>{
-                    setData(res.data)
-                });
+        getWinners(0)
+            .then(res => setData(res));
     }, [])
 
     return (<>

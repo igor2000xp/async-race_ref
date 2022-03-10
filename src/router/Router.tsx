@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import Garage from '../components/UI/Garage';
-import Winners from '../components/UI/Winners';
+import Winners from "../components/UI/winners/Winners";
 
 const Router:React.FC = () => {
   return (
