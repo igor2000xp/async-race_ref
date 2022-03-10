@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import WinnerSlot from "./winer-slot/WinnerSlot";
+// @ts-ignore
 import style from "./Winners.module.css";
 
 interface IWinner {
