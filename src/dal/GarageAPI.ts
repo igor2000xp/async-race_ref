@@ -19,9 +19,11 @@ export const deleteCar = (id: number):Promise<void> => instance.delete(`${garage
 
 export const getCars = (page = 0):Promise<ICar[]> => {
   return instance.get(`${garage}?_pag=${page}&_limit=${limitCars}`,
-    {
-      headers: { "X-Total-Count": "4", }
-    });
+    // {
+    //   headers: { "X-Total-Count": "4", }
+    // }
+    )
+    // .then(res => res.headers['X-Total-Count']);
 }
 
 export const updateCar = (id: number, name: string, color: string):Promise<ICar> => {

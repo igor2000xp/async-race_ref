@@ -1,6 +1,5 @@
 import React from 'react';
 import './css/Garage.css';
-// @ts-ignore
 import style from './css/Header.module.css';
 
 const Header:React.FC = () => {
