@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from './header';
 import GarageSubHeader from './GarageComponent/GarageSubHeader';
 import GarageTopic from './GarageComponent/GarageTopic';
@@ -17,12 +17,14 @@ const Garage = () => {
   store.dispatch(setGarageCars(
     !carsNumberRequest? 0: carsNumberRequest
   ));
+  useEffect(() => {
+    getCars(pageNumber)
+      .then((res) => {
+        setCarsNumberRequest(res.carsNumber);
+      })
 
-  async function requestCarNumber() {
-    setCarsNumberRequest(await getCars(pageNumber)
-      .then((res) => res.carsNumber))
-  }
-  console.log(requestCarNumber());
+  }, [pageNumber])
+  console.log('rendering Garage');
 
   return (
     <div className='page-wrapper'>
