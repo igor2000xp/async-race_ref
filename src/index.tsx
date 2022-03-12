@@ -1,35 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
-import { createStore } from 'redux';
+// import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
+import store from './bll/store';
+// import reducer from './bll/reducer/reducer';
 
-interface IAction {
-  type: string;
-  payload: number;
-}
+// interface IAction {
+//   type: string;
+//   payload: string;
+// }
 // const action:IAction = {type: '', payload: 0};
 
-export interface IState {
-  cash: number;
-}
-const defaultState = {
-  cash: 0,
-}
-const reducer = (state:IState = defaultState, action:IAction) => {
-  switch ( action.type ) {
-    case 'ADD_CASH':
-      return {...state, cash: state.cash + action.payload};
-    case 'GET_CASH':
-      return {...state, cash: state.cash - action.payload};
+// export interface IState {
+//   cash: number;
+// }
+// const defaultState = {
+//   cash: 0,
+// }
+// const reducer = (state:IState = defaultState, action:IAction) => {
+//   switch ( action.type ) {
+//     case 'ADD_CASH':
+//       return {...state, cash: state.cash + action.payload};
+//     case 'GET_CASH':
+//       return {...state, cash: state.cash - action.payload};
+//
+//     default:
+//       return  state;
+//   }
 
-    default:
-      return  state;
-  }
-
-}
-const store = createStore(reducer);
+// }
+// const store = createStore(reducer);
 
 // ReactDOM.render(
 //   <Provider store={store}>

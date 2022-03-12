@@ -45,10 +45,10 @@
 }
 .input__text {
   height: 2.5vh;
-  width: 18vh;
+  width: 23vh;
   background-color: white;
   margin: 0 0.3vw 0 0;
-  font-size: 1.5vh;
+  font-size: 2.2vh;
 }
 .update-input__text {
   background-color: silver;
@@ -67,7 +67,7 @@ input[type="color"] {
   width: 6vh;
 }
 .input-cars__button {
-  width: 10.7vh;
+  width: 15.7vh;
 }
 #color-create {
   height: 1vw;

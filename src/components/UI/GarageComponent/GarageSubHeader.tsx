@@ -24,7 +24,7 @@ const GarageSubHeader = () => {
       <section className="main-buttons__block create cars-control">
         <button id="race" className="floating-button">RACE</button>
         <button id="reset" className="floating-button">RESET</button>
-        <button id="generate-cars" className="floating-button input__button input-cars__button">GENERATE CARS</button>
+        <button id="generate-cars" className="floating-button input__button input-cars__button">GENERATE 100 CARS</button>
       </section>
 
     </div>

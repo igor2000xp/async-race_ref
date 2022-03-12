@@ -1,10 +1,7 @@
 import React from 'react';
 import '../css/CarListSection.css';
-// import generateCarString from './carsImg/CarSVG';
-// import flagSvg from './carsImg/FlagImg';
 import FinishFlag from '../carsImg/FinishFlag';
 import { ReactComponent as Logo } from '../carsImg/auto.svg';
-// import CarSvg from '../carsImg/CarSVG';
 
 interface IProps {
   id:number;
@@ -12,7 +9,6 @@ interface IProps {
 }
 
 const CarRaceTrack:React.FC<IProps> = (props) => {
-  // const carImg = generateCarString(props.id, props.color);
   const carID = 'car' + props.id;
   const carClassID = 'car-img car-img-animation' + props.id;
   return (
