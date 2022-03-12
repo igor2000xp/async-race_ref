@@ -12,7 +12,7 @@ interface IState {
 
 const stateInitiation:IState = {
   garagePage: 0,
-  garageCars:4,
+  garageCars:1,
   winnerPage:0,
   winnerCars:0,
   winnerID:1,

@@ -3,12 +3,16 @@ import '../css/CarListSection.css';
 import EngineButtons from './EngineButtons';
 import CarRaceTrack from './CarRaceTrack';
 
-const CarFullTrack:React.FC = () => {
+interface IProps {
+  id:number;
+  color:string;
+}
+
+const CarFullTrack:React.FC<IProps> = (props) => {
   return (
     <div className='car-full-truck'>
-      <EngineButtons id={1} />
-      <CarRaceTrack id={1} color='red' />
-      
+      <EngineButtons id={props.id} />
+      <CarRaceTrack id={props.id} color={props.color} />
     </div>
   );
 };

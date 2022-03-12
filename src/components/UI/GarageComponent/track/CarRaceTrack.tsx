@@ -17,7 +17,7 @@ const CarRaceTrack:React.FC<IProps> = (props) => {
         <Logo
           width={200}
           height={30}
-          fill={'red'}
+          fill={props.color}
           stroke='white'
           strokeWidth={250}
         />
