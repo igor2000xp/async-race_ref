@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import axios from "axios";
-import WinnerSlot from "./winer-slot/WinnerSlot";
+import axios from 'axios';
+import WinnerSlot from './winer-slot/WinnerSlot';
 // @ts-ignore
-import style from "./Winners.module.css";
+import style from './Winners.module.css';
+import Header from '../UI/header';
 
 interface IWinner {
     id: number,
@@ -21,7 +22,8 @@ const Winners = () => {
                 });
     }, [])
 
-    return (<>
+    return (<div className={style.wrapper}>
+        <Header />
         <h3 className={style.title}>Winners</h3>
         <ul className={style.wrapper}>
             {data?.map(winner => <WinnerSlot
@@ -31,7 +33,7 @@ const Winners = () => {
                 time={winner.time}
             />)}
         </ul>
-    </>);
+    </div>);
 };
 
 export default Winners;

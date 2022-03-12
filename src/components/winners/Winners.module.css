@@ -3,7 +3,10 @@
 }
 
 .wrapper {
+  height: 100vh;
   list-style: none;
   padding: 0;
   border: 1px solid black;
+  color: white;
+  background-color: #070302;
 }
