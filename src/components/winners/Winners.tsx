@@ -4,6 +4,7 @@ import WinnerSlot from './winer-slot/WinnerSlot';
 // @ts-ignore
 import style from './Winners.module.css';
 import Header from '../UI/header';
+import {getWinners} from "../../dal/WinnersAPI";
 
 interface IWinner {
     id: number,
@@ -14,17 +15,20 @@ interface IWinner {
 const Winners = () => {
 
     const [data, setData] = useState<Array<IWinner>>([])
+    const [totalWinners, setTotalWinners] = useState(0)
 
     useEffect(() => {
-            axios.get<Array<IWinner>>('http://localhost:3000/winners')
-                .then(res =>{
-                    setData(res.data)
-                });
+        getWinners()
+            .then(res => {
+                const {totalCount, winners} = res;
+                setData(winners);
+                setTotalWinners(totalCount);
+            })
     }, [])
 
     return (<div className={style.wrapper}>
         <Header />
-        <h3 className={style.title}>Winners</h3>
+        <h3 className={style.title}>Winners total: {totalWinners}</h3>
         <ul className={style.wrapper}>
             {data?.map(winner => <WinnerSlot
                 key={String(winner.id)}
