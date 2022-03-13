@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import store, { RootStoreType } from '../../bll/store';
 import { setGarageCars } from '../../bll/reducer/actions';
 import {getCars} from '../../dal/GarageAPI';
+import { GARAGE } from '../../bll/reducer/actionConstant';
 
 const Garage = () => {
   const pageNumber = useSelector<RootStoreType, number>((state) => state.reducer.garagePage);
@@ -28,7 +29,7 @@ const Garage = () => {
         <GarageSubHeader />
         <GarageTopic page={pageNumber} garage={carsNumber} />
         <CarListSection />
-        <Footer />
+        <Footer switchPage={GARAGE} />
       </div>
     </div>
   );

@@ -7,5 +7,7 @@ enum ActionConstant {
   LAST_TIME_WINNER = 'LAST_TIME_WINNER',
   CAR_RENDER = 'CAR_RENDER',
 }
+export const WINNER = 'WINNER';
+export const GARAGE = 'GARAGE';
 
 export default ActionConstant;

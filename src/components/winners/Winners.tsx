@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import WinnerSlot from './winer-slot/WinnerSlot';
-// @ts-ignore
 import style from './Winners.module.css';
 import Header from '../UI/header';
+import Footer from "../UI/Footer";
+import { WINNER } from '../../bll/reducer/actionConstant';
 
 interface IWinner {
     id: number,
@@ -33,6 +34,7 @@ const Winners = () => {
                 time={winner.time}
             />)}
         </ul>
+        <Footer switchPage={WINNER} />
     </div>);
 };
 
