@@ -1,4 +1,4 @@
-import React, {useEffect, useLayoutEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import styles from "./WinnerSlot.module.css";
 import { ReactComponent as Logo } from '../../UI/GarageComponent/carsImg/auto.svg';
@@ -18,7 +18,7 @@ const WinnerSlot = ({id, wins, time}: IWinnerSlot) => {
 
     const [data, setData] = useState<ICar>()
 
-    useLayoutEffect(() => {
+    useEffect(() => {
             axios.get(`http://localhost:3000/garage/${id}`)
                 .then(res => {
                     setData({...res.data, wins, time});

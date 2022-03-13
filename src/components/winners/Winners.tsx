@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import axios from 'axios';
-import WinnerSlot from './winer-slot/WinnerSlot';
+import WinnerSlot from './winner-slot/WinnerSlot';
 // @ts-ignore
 import style from './Winners.module.css';
 import Header from '../UI/header';
 import {getWinners} from "../../dal/WinnersAPI";
+import {useDispatch} from "react-redux";
+import {setWinnerCars} from "../../bll/reducer/actions";
+import WinnersHeader from "./winners-header/WinnersHeader";
 
 interface IWinner {
     id: number,
@@ -15,20 +17,20 @@ interface IWinner {
 const Winners = () => {
 
     const [data, setData] = useState<Array<IWinner>>([])
-    const [totalWinners, setTotalWinners] = useState(0)
+    const dispatch = useDispatch()
 
     useEffect(() => {
         getWinners()
             .then(res => {
                 const {totalCount, winners} = res;
                 setData(winners);
-                setTotalWinners(totalCount);
+                dispatch(setWinnerCars(totalCount));
             })
     }, [])
 
     return (<div className={style.wrapper}>
         <Header />
-        <h3 className={style.title}>Winners total: {totalWinners}</h3>
+        <WinnersHeader />
         <ul className={style.wrapper}>
             {data?.map(winner => <WinnerSlot
                 key={String(winner.id)}
