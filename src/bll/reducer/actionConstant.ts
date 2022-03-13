@@ -5,6 +5,7 @@ enum ActionConstant {
   WINNER_CARS = 'WINNER_CARS',
   WINNER_ID = 'WINNER_ID',
   LAST_TIME_WINNER = 'LAST_TIME_WINNER',
+  CAR_RENDER = 'CAR_RENDER',
 }
 
 export default ActionConstant;

@@ -12,19 +12,20 @@ import {getCars} from '../../dal/GarageAPI';
 const Garage = () => {
   const pageNumber = useSelector<RootStoreType, number>((state) => state.reducer.garagePage);
   const carsNumber = useSelector<RootStoreType, number>((state) => state.reducer.garageCars);
-  const [carsNumberRequest, setCarsNumberRequest] = useState<number>();
+  // const carRender = useSelector<RootStoreType, number>((state) => state.reducer.carRender);
+  // const [carsNumberRequest, setCarsNumberRequest] = useState<number>();
 
-  store.dispatch(setGarageCars(
-    !carsNumberRequest? 0: carsNumberRequest
-  ));
   useEffect(() => {
     getCars(pageNumber)
       .then((res) => {
-        setCarsNumberRequest(res.carsNumber);
+        store.dispatch(setGarageCars(
+          res.carsNumber
+        ));
       })
 
-  }, [pageNumber])
+  }, [pageNumber, carsNumber])
   console.log('rendering Garage');
+  console.log(carsNumber);
 
   return (
     <div className='page-wrapper'>

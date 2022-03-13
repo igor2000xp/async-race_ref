@@ -8,6 +8,7 @@ interface IState {
   winnerCars:number;
   winnerID:number;
   lastTimeWinner:number;
+  carRender:number;
 }
 
 const stateInitiation:IState = {
@@ -17,6 +18,7 @@ const stateInitiation:IState = {
   winnerCars:0,
   winnerID:1,
   lastTimeWinner:0,
+  carRender:0,
 }
 
 export default function reducer(state = stateInitiation, action:ResultsActions):IState {
@@ -33,6 +35,8 @@ export default function reducer(state = stateInitiation, action:ResultsActions):
       return {...state, winnerID: action.actionSet}
     case ActionConstant.LAST_TIME_WINNER:
       return {...state, lastTimeWinner: action.actionSet}
+    case ActionConstant.CAR_RENDER:
+      return {...state, carRender: action.actionSet}
     default: return state;
   }
 }

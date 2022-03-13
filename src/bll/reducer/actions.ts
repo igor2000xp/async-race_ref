@@ -5,7 +5,8 @@ export type ResultsActions = ReturnType<typeof setGaragePage>
   | ReturnType<typeof setWinnerPage>
   | ReturnType<typeof setWinnerCars>
   | ReturnType<typeof setWinnerID>
-  | ReturnType<typeof setLastTime>;
+  | ReturnType<typeof setLastTime>
+  | ReturnType<typeof setCarRender>;
 
 interface ISet {
   type:string;
@@ -28,5 +29,9 @@ export const setWinnerID = (winnerID:number):ISet => {
   return {type:ActionConstant.WINNER_ID, actionSet:winnerID};
 }
 export const setLastTime = (lastTime:number):ISet => {
-  return {type:ActionConstant.WINNER_ID, actionSet:lastTime};
+  return {type: ActionConstant.WINNER_ID, actionSet: lastTime};
 }
+export const setCarRender = (caeRender:number):ISet => {
+  return {type:ActionConstant.CAR_RENDER, actionSet:caeRender}
+}
+

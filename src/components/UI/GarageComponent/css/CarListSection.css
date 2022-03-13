@@ -11,7 +11,7 @@
 }
 .car-full-truck {
   display: flex;
-  height: 4.5vh;
+  height: 4.1vh;
   border-bottom: 2px white dashed;
   margin: 0 0 1vh 0;
 }

@@ -9,8 +9,15 @@ export const instance = axios.create({
 
 export const createCar = (name: string = 'BMW', color: string = 'white'):Promise<ICar> => {
   const getCarWithoutID = instance.post<ICar>(
-    garage, { body: { name, color} })
-  return getCarWithoutID.then(res => res.data);
+    garage, { name, color },
+    {
+    headers: {
+      'content-type': 'application/json',
+    },})
+  return getCarWithoutID.then(res => {
+    console.log(res.data)
+    return res.data;
+  });
   };
 
 export const getCar = (id: number):Promise<ICar> => instance.get(`${garage}/${id}`).then(res => res.data);
