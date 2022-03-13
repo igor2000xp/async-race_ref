@@ -9,15 +9,13 @@ const CarListSection:React.FC = () => {
   const pageNumber = useSelector<RootStoreType, number>((state) => state.reducer.garagePage);
   const carsNumber = useSelector<RootStoreType, number>((state) => state.reducer.garageCars);
   const [cars, setCars] = useState<ICar[]>();
+
   useEffect(() => {
     getCars(pageNumber)
       .then((res) => {
         setCars(res.cars);
       });
   },[pageNumber, carsNumber]);
-  // useEffect(() => {
-  //
-  // },)
 
   return (
     <section id='car-list-section'>

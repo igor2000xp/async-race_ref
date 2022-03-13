@@ -15,7 +15,6 @@ export const createCar = (name: string = 'BMW', color: string = 'white'):Promise
       'content-type': 'application/json',
     },})
   return getCarWithoutID.then(res => {
-    console.log(res.data)
     return res.data;
   });
   };
@@ -24,14 +23,13 @@ export const getCar = (id: number):Promise<ICar> => instance.get(`${garage}/${id
 
 export const deleteCar = (id: number):Promise<void> => instance.delete(`${garage}/${id}`).then();
 
-export const getCars = (page = 0):Promise<{cars:ICar[], carsNumber:number }> => {
-  return instance.get(`${garage}?_pag=${page}&_limit=${limitCars}`,)
+export const getCars = (page:number):Promise<{cars:ICar[], carsNumber:number }> => {
+  return instance.get(`${garage}?_page=${page}&_limit=${limitCars}`,)
     .then((res) => {
       const cars = res.data;
       const carsNumber = res.headers['x-total-count'];
       return {cars: cars, carsNumber:Number(carsNumber)}
     })
-    // .then(res => res.headers['x-total-count']);
 }
 
 export const updateCar = (id: number, name: string, color: string):Promise<ICar> => {

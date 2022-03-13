@@ -1,4 +1,4 @@
-import ActionConstant from "./actionConstant";
+import ActionConstant from './actionConstant';
 
 export type ResultsActions = ReturnType<typeof setGaragePage>
   | ReturnType<typeof setGarageCars>

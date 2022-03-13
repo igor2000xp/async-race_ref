@@ -15,7 +15,7 @@ const GarageSubHeader:React.FC = () => {
   const inputUpdateColor = useRef<HTMLInputElement>(null);
   let countRender = 0;
   useEffect(() => {
-    console.log()
+    // console.log()
   }, [carColor])
 
   const colorHandler = () => {

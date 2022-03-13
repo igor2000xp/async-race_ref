@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import Header from './header';
 import GarageSubHeader from './GarageComponent/GarageSubHeader';
 import GarageTopic from './GarageComponent/GarageTopic';
@@ -12,20 +12,14 @@ import {getCars} from '../../dal/GarageAPI';
 const Garage = () => {
   const pageNumber = useSelector<RootStoreType, number>((state) => state.reducer.garagePage);
   const carsNumber = useSelector<RootStoreType, number>((state) => state.reducer.garageCars);
-  // const carRender = useSelector<RootStoreType, number>((state) => state.reducer.carRender);
-  // const [carsNumberRequest, setCarsNumberRequest] = useState<number>();
 
   useEffect(() => {
     getCars(pageNumber)
       .then((res) => {
         store.dispatch(setGarageCars(
           res.carsNumber
-        ));
-      })
-
-  }, [pageNumber, carsNumber])
-  console.log('rendering Garage');
-  console.log(carsNumber);
+    ));})
+  }, [pageNumber, carsNumber]);
 
   return (
     <div className='page-wrapper'>
