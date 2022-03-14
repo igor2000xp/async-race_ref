@@ -7,19 +7,19 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  height: 5vh;
+  height: 4vh;
 }
 .create {
   margin: 0.4vh 0 0.4vh 0;
 }
 .control {
-  padding: 1.5vh 0.7vh 0 0.7vh;
+  padding: 0.5vh 0.7vh 0 0.7vh;
 }
 .floating-button {
   text-decoration: none;
   display: inline-block;
   width: 9vh;
-  height: 3.5vh;
+  height: 3.2vh;
   line-height: 1vh;
   border-radius: 0.5vh;
   margin: 0.1vh 0.2vh;

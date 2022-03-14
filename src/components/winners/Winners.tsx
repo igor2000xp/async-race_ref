@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import WinnerSlot from './winner-slot/WinnerSlot';
-// @ts-ignore
 import style from './Winners.module.css';
 import Header from '../UI/header';
+import Footer from "../UI/Footer";
+import { WINNER } from '../../bll/reducer/actionConstant';
 import {getWinners} from "../../dal/WinnersAPI";
 import {useDispatch} from "react-redux";
 import {setWinnerCars} from "../../bll/reducer/actions";
@@ -39,6 +40,7 @@ const Winners = () => {
                 time={winner.time}
             />)}
         </ul>
+        <Footer switchPage={WINNER} />
     </div>);
 };
 

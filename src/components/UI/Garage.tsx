@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect } from 'react';
 import Header from './header';
 import GarageSubHeader from './GarageComponent/GarageSubHeader';
 import GarageTopic from './GarageComponent/GarageTopic';
@@ -8,23 +8,19 @@ import { useSelector } from 'react-redux';
 import store, { RootStoreType } from '../../bll/store';
 import { setGarageCars } from '../../bll/reducer/actions';
 import {getCars} from '../../dal/GarageAPI';
+import { GARAGE } from '../../bll/reducer/actionConstant';
 
 const Garage = () => {
   const pageNumber = useSelector<RootStoreType, number>((state) => state.reducer.garagePage);
   const carsNumber = useSelector<RootStoreType, number>((state) => state.reducer.garageCars);
-  const [carsNumberRequest, setCarsNumberRequest] = useState<number>();
 
-  store.dispatch(setGarageCars(
-    !carsNumberRequest? 0: carsNumberRequest
-  ));
   useEffect(() => {
     getCars(pageNumber)
       .then((res) => {
-        setCarsNumberRequest(res.carsNumber);
-      })
-
-  }, [pageNumber])
-  console.log('rendering Garage');
+        store.dispatch(setGarageCars(
+          res.carsNumber
+    ));})
+  }, [pageNumber, carsNumber]);
 
   return (
     <div className='page-wrapper'>
@@ -33,7 +29,7 @@ const Garage = () => {
         <GarageSubHeader />
         <GarageTopic page={pageNumber} garage={carsNumber} />
         <CarListSection />
-        <Footer />
+        <Footer switchPage={GARAGE} />
       </div>
     </div>
   );

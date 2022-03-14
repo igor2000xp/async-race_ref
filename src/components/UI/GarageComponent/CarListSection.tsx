@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import UnionDetailsOfTrack from './unionDetailsOfTrack';
 import {useSelector} from 'react-redux';
 import {RootStoreType} from '../../../bll/store';
@@ -7,19 +7,21 @@ import {getCars} from '../../../dal/GarageAPI';
 
 const CarListSection:React.FC = () => {
   const pageNumber = useSelector<RootStoreType, number>((state) => state.reducer.garagePage);
+  const carsNumber = useSelector<RootStoreType, number>((state) => state.reducer.garageCars);
   const [cars, setCars] = useState<ICar[]>();
-  useState(() => {
+
+  useEffect(() => {
     getCars(pageNumber)
       .then((res) => {
         setCars(res.cars);
-        // console.log(res.cars[0]);
       });
-  });
+  },[pageNumber, carsNumber]);
 
   return (
     <section id='car-list-section'>
-      {cars?.map((e) => {
-        return <UnionDetailsOfTrack id={e.id} name={e.name} color={e.color} />
+      {
+        cars?.map((e) => {
+          return <UnionDetailsOfTrack key={e.id} id={e.id} name={e.name} color={e.color} />
       })}
     </section>
   );
