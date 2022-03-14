@@ -1,0 +1,19 @@
+.animated-car {
+  position: relative;
+  animation-name: anime-car-frame;
+  animation-timing-function: linear;
+  animation-direction: normal;
+  animation-play-state: running;
+  animation-fill-mode: forwards;
+}
+.animated-car-paused {
+  animation-play-state:paused;
+}
+@keyframes anime-car-frame {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 80vw;
+  }
+}
