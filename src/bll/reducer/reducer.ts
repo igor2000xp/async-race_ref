@@ -1,42 +1,43 @@
 import {ResultsActions} from './actions';
 import ActionConstant from './actionConstant';
+import {IWinner} from "../../types/typesAPI";
 
 interface IState {
   garagePage:number;
   garageCars:number;
   winnerPage:number;
-  winnerCars:number;
+  winnerCars: Array<IWinner> | null;
+  winnerTotalCount: number
   winnerID:number;
   lastTimeWinner:number;
-  carRender:number;
 }
 
 const stateInitiation:IState = {
-  garagePage: 1,
-  garageCars:4,
+  garagePage: 0,
+  garageCars:1,
   winnerPage:0,
-  winnerCars:0,
+  winnerCars: null,
+  winnerTotalCount: 0,
   winnerID:1,
   lastTimeWinner:0,
-  carRender:0,
 }
 
 export default function reducer(state = stateInitiation, action:ResultsActions):IState {
   switch ( action.type ) {
     case ActionConstant.GARAGE_PAGE:
-      return {...state, garagePage: action.actionSet}
+      return {...state, garagePage: action.garagePage}
     case ActionConstant.GARAGE_CARS:
-      return {...state, garageCars: action.actionSet}
+      return {...state, garageCars: action.garageCars}
     case ActionConstant.WINNER_PAGE:
-      return {...state, winnerPage: action.actionSet}
+      return {...state, winnerPage: action.winnerPage}
     case ActionConstant.WINNER_CARS:
-      return {...state, winnerCars: action.actionSet}
+      return {...state, winnerCars: [...action.winnerCars]}
+    case ActionConstant.WINNER_TOTAL_COUNT:
+      return {...state, winnerTotalCount: action.totalCount}
     case ActionConstant.WINNER_ID:
-      return {...state, winnerID: action.actionSet}
+      return {...state, winnerID: action.winnerID}
     case ActionConstant.LAST_TIME_WINNER:
-      return {...state, lastTimeWinner: action.actionSet}
-    case ActionConstant.CAR_RENDER:
-      return {...state, carRender: action.actionSet}
+      return {...state, lastTimeWinner: action.lastTime}
     default: return state;
   }
 }

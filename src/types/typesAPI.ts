@@ -15,8 +15,6 @@ export interface IEngine {
 
 export interface IWinner extends IWinnerUpdate{
   id: number,
-  // wins: number,
-  // time: number,
 }
 export interface IWinnerUpdate {
   wins: number;
