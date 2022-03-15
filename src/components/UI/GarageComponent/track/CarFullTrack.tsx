@@ -14,6 +14,7 @@ interface IProps {
 const CarFullTrack:React.FC<IProps> = (props) => {
   const [animationStart, setAnimationStart] = useState(false);
   console.log(animationStart);
+  const nodeRef = React.useRef(null);
 
   return (
     <div className='car-full-truck'>
@@ -22,9 +23,10 @@ const CarFullTrack:React.FC<IProps> = (props) => {
         in={animationStart}
         timeout={13000}
         classNames="animatedCar"
+        nodeRef={nodeRef}
       >
         {(state) =>  {
-          return <div className={`car ${state}`}>
+          return <div ref={nodeRef} className={`car ${state}`}>
             <CarRaceTrack id={props.id} color={props.color} />
           </div>
         }}
