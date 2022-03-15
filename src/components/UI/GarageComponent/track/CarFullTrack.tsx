@@ -3,7 +3,8 @@ import '../css/CarListSection.css';
 import '../css/CarAnimation.css';
 import EngineButtons from './EngineButtons';
 import CarRaceTrack from './CarRaceTrack';
-import { CSSTransition } from 'react-transition-group';
+import { Transition } from 'react-transition-group';
+import FinishFlag from "../carsImg/FinishFlag";
 
 interface IProps {
   id:number;
@@ -12,19 +13,23 @@ interface IProps {
 
 const CarFullTrack:React.FC<IProps> = (props) => {
   const [animationStart, setAnimationStart] = useState(false);
+  console.log(animationStart);
 
   return (
     <div className='car-full-truck'>
       <EngineButtons id={props.id} a={() => {setAnimationStart(true)}} />
-      <CSSTransition
+      <Transition
         in={animationStart}
-        timeout={300}
-        classNames="animated-car"
+        timeout={13000}
+        classNames="animatedCar"
       >
-        <CarRaceTrack id={props.id} color={props.color} />
-      </CSSTransition>
-
-
+        {(state) =>  {
+          return <div className={`car ${state}`}>
+            <CarRaceTrack id={props.id} color={props.color} />
+          </div>
+        }}
+      </Transition>
+      <FinishFlag />
     </div>
   );
 };

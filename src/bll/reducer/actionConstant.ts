@@ -6,7 +6,6 @@ enum ActionConstant {
   WINNER_TOTAL_COUNT = 'WINNER_TOTAL_COUNT',
   WINNER_ID = 'WINNER_ID',
   LAST_TIME_WINNER = 'LAST_TIME_WINNER',
-  CAR_RENDER = 'CAR_RENDER',
 }
 export const WINNER = 'WINNER';
 export const GARAGE = 'GARAGE';

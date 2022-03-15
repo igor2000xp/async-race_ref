@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../css/Garage.css';
 import {createCar} from '../../../dal/GarageAPI';
 import {useSelector} from "react-redux";
-import store, {RootStoreType} from "../../../bll/store";
-import {setCarRender, setGarageCars} from '../../../bll/reducer/actions';
+import store, {RootStoreType} from '../../../bll/store';
+import { setGarageCars} from '../../../bll/reducer/actions';
 
 const GarageSubHeader:React.FC = () => {
   const carsNumber = useSelector<RootStoreType, number>((state) => state.reducer.garageCars);

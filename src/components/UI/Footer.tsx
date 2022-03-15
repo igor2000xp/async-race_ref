@@ -14,7 +14,7 @@ const Footer:React.FC<IProps> = (props) => {
   const pageNumber = useSelector<RootStoreType, number>((state) => state.reducer.garagePage);
   const carsNumber = useSelector<RootStoreType, number>((state) => state.reducer.garageCars);
   const winnerPageNumber = useSelector<RootStoreType, number>((state) => state.reducer.winnerPage);
-  const winnerCarsNumber = useSelector<RootStoreType, number>((state) => state.reducer.winnerCars);
+  const winnerCarsNumber = useSelector<RootStoreType, number>((state) => state.reducer.winnerTotalCount);
 
   const numberOfPageRestGarage = carsNumber % limitCars;
   let numberOfPageGarage = Math.floor(carsNumber / limitCars) + 1;
