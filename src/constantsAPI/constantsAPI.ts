@@ -5,3 +5,5 @@ export const garage = `/garage`;
 export const limitCars = 7;
 export const page = 1;
 export const limitPageWinners = 10;
+export const sortingASC = 'ASC';
+export const sortingDESC = 'DESC';

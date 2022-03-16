@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import styles from "./WinnerSlot.module.css";
 import { ReactComponent as Logo } from '../../UI/GarageComponent/carsImg/auto.svg';
+import {getCar} from "../../../dal/GarageAPI";
 
 interface IWinnerSlot {
     id: number,
@@ -19,10 +20,10 @@ const WinnerSlot = ({id, wins, time}: IWinnerSlot) => {
     const [data, setData] = useState<ICar>()
 
     useEffect(() => {
-            axios.get(`http://localhost:3000/garage/${id}`)
-                .then(res => {
-                    setData({...res.data, wins, time});
-                });
+        getCar(id)
+            .then(res => {
+                setData({...res, wins, time});
+            });
     }, [])
 
     return (
