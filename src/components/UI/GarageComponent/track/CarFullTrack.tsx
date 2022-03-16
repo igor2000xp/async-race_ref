@@ -18,7 +18,11 @@ const CarFullTrack:React.FC<IProps> = (props) => {
 
   return (
     <div className='car-full-truck'>
-      <EngineButtons id={props.id} a={() => {setAnimationStart(true)}} />
+      <EngineButtons
+        id={props.id}
+        a={() => {setAnimationStart(true)}}
+        b={() => {setAnimationStart(false)}}
+         />
       <Transition
         in={animationStart}
         timeout={13000}
