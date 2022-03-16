@@ -4,7 +4,7 @@ import '../css/CarAnimation.css';
 import EngineButtons from './EngineButtons';
 import CarRaceTrack from './CarRaceTrack';
 import { Transition } from 'react-transition-group';
-import FinishFlag from "../carsImg/FinishFlag";
+import FinishFlag from '../carsImg/FinishFlag';
 
 interface IProps {
   id:number;
