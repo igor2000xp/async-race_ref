@@ -25,8 +25,8 @@ export const getWinner = (id: number): Promise<IWinner> => {
     return instance.get(`${winnersPath}/?id=${id}`,).then(res => res.data);
 }
 
-export const getWinners = (page: number = 0): Promise<{ totalCount: number , winners: IWinner[] }> => {
-    return instance.get(`${winnersPath}?page=${page}&_limit=${limitPageWinners}${sortAndOrderWinners()}`)
+export const getWinners = (page: number): Promise<{ totalCount: number , winners: IWinner[] }> => {
+    return instance.get(`${winnersPath}?_page=${page}&_limit=${limitPageWinners}${sortAndOrderWinners()}`)
         .then(res => {
             const { headers, data } = res;
             const totalCount = Number(headers['x-total-count']);

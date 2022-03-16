@@ -26,13 +26,15 @@ const WinnerSlot = ({id, wins, time}: IWinnerSlot) => {
     }, [])
 
     return (
-        <li className={styles.wrapper}>
-            <div>Id: {data?.id}</div>
-            <div>Name: {data?.name}</div>
-            <Logo width={100} height={50} fill={data?.color} stroke='white' strokeWidth={100}/>
-            <div>Wins: {data?.wins}</div>
-            <div>Time: {data?.time}.s</div>
-        </li>
+        <tr className={styles.wrapper}>
+            <td>{data?.id}</td>
+            <td>{data?.name}</td>
+            <td>
+                <Logo width={100} height={50} fill={data?.color} stroke='white' strokeWidth={100}/>
+            </td>
+            <td>{data?.wins}</td>
+            <td>{data?.time}.s</td>
+        </tr>
     );
 };
 
