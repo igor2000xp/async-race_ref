@@ -21,7 +21,7 @@ const Footer:React.FC<IProps> = (props) => {
   numberOfPageGarage = numberOfPageRestGarage? numberOfPageGarage: numberOfPageGarage + 1;
 
   const numberOfPageRestWinner = winnerCarsNumber % limitPageWinners;
-  let numberOfPageWinner = Math.floor(carsNumber / limitPageWinners) + 1;
+  let numberOfPageWinner = Math.floor(winnerCarsNumber / limitPageWinners) + 1;
   numberOfPageWinner = numberOfPageRestWinner? numberOfPageWinner: numberOfPageWinner + 1;
 
   const nextPage = () => {
@@ -29,6 +29,8 @@ const Footer:React.FC<IProps> = (props) => {
     store.dispatch(setGaragePage(pageNumber < numberOfPageGarage? pageNumber + 1: 1)):
       store.dispatch(setWinnerPage(winnerPageNumber < numberOfPageWinner ? winnerPageNumber + 1 : 1));
     console.log('next', props.switchPage);
+    console.log('winnerPageNumber', winnerPageNumber);
+    console.log('numberOfPageWinner', numberOfPageWinner);
   }
   const prevPage = () => {
     props.switchPage === GARAGE?
