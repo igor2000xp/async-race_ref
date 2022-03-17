@@ -1,6 +1,6 @@
 import {instance} from './GarageAPI';
 import {IWinner, IWinnerUpdate} from "../types/typesAPI";
-import {limitPageWinners, winnersPath} from "../constantsAPI/constantsAPI";
+import {limitPageWinners, SortingType, winnersPath} from "../constantsAPI/constantsAPI";
 import sortAndOrderWinners from "./sortAndOrderWinners";
 
 export const createWinner = (winner: IWinner): Promise<IWinner> => {
@@ -27,10 +27,10 @@ export const getWinner = (id: number): Promise<IWinner> => {
 
 export const getWinners = (
     page: number,
-    sorting: {isASC: string, type: string}
+    sorting: {type: SortingType, order: string}
 ): Promise<{ totalCount: number , winners: IWinner[] }> => {
     return instance.get(
-        `${winnersPath}?_page=${page}&_limit=${limitPageWinners}${sortAndOrderWinners(sorting.type, sorting.isASC)}`
+        `${winnersPath}?_page=${page}&_limit=${limitPageWinners}${sortAndOrderWinners(sorting.type, sorting.order)}`
     )
         .then(res => {
             const { headers, data } = res;

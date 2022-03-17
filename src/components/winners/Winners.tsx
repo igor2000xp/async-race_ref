@@ -10,15 +10,16 @@ import {IWinner} from "../../types/typesAPI";
 import Footer from "../UI/Footer";
 import { WINNER } from '../../bll/reducer/actionConstant';
 import TableHeader from "./winners-table-header/TableHeader";
+import {sortingASC, SortingType} from "../../constantsAPI/constantsAPI";
 
 const Winners = () => {
     const currentPage = useSelector<RootStoreType, number>(state => state.reducer.winnerPage);
     const winnerCars = useSelector<RootStoreType, Array<IWinner> | null>( state => state.reducer.winnerCars);
     const dispatch = useDispatch();
 
-    const [sortingOPT, setSorting] = useState<{isASC: string, type: string}>({
-        isASC: "ASC",
-        type: "wins",
+    const [sortingOPT, setSorting] = useState<{type: SortingType, order: string }>({
+        type: SortingType.wins,
+        order: sortingASC,
     })
 
     useEffect(() => {

@@ -2,6 +2,7 @@ import {getCar} from "../../dal/GarageAPI";
 import {getWinners} from "../../dal/WinnersAPI";
 import {setWinnerCars, setWinnerTotalCount} from "./actions";
 import {Dispatch} from "redux";
+import {SortingType} from "../../constantsAPI/constantsAPI";
 
 export function getCarsThunk(id:number) {
   // const car = getCar(id);
@@ -11,7 +12,7 @@ export function getCarsThunk(id:number) {
   }
 }
 
-export function getWinnerCarsThunk(page: number, sortingOPT: {isASC: string, type: string}) {
+export function getWinnerCarsThunk(page: number, sortingOPT: {type: SortingType, order: string}) {
   return (dispatch: Dispatch) => {
     getWinners(page, sortingOPT)
         .then(res => {
