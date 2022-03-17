@@ -1,26 +1,27 @@
 import React from "react";
 import styles from './TableHeader.module.css'
-import {sortingASC, sortingDESC} from "../../../constantsAPI/constantsAPI";
 
 const TableHeader = () => {
 
-    const sorting = (event: React.ChangeEvent<HTMLSelectElement>) => {
-        console.log(event.target.value);
+    const sorting = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        const field = event.currentTarget.textContent?.toLowerCase();
+        console.log(field)
     }
 
     return (
-        <thead>
-        <tr className={styles.wrapper}>
-            <th>Id</th>
-            <th>Name</th>
+        <thead className={styles.wrapper}>
+        <tr>
+            <th>NAME</th>
+            <th />
             <th>
-                <select onChange={sorting}>
-                    <option defaultChecked value={sortingASC}>ascending</option>
-                    <option value={sortingDESC}>descending</option>
-                </select>
+                <button onClick={sorting}>ID</button>
             </th>
-            <th>Wins</th>
-            <th>Time</th>
+            <th>
+                <button onClick={sorting}>WINS</button>
+            </th>
+            <th>
+                <button onClick={sorting}>TIME</button>
+            </th>
         </tr>
         </thead>
     );

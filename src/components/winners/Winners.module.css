@@ -1,9 +1,12 @@
 .wrapper {
-  height: 100vh;
-  width: 100%;
-  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 0;
-  border: 1px solid black;
   color: white;
   background-color: #070302;
+}
+
+.tableWrapper {
+  width: 80%;
 }

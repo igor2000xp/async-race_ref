@@ -23,7 +23,7 @@ const Winners = () => {
     return (<div className={style.wrapper}>
         <Header />
         <WinnersHeader />
-        <table className={style.wrapper}>
+        <table className={style.tableWrapper}>
             <TableHeader />
             <tbody>
             {winnerCars?.map(winner => <WinnerSlot

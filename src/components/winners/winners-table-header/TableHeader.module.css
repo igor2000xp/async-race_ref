@@ -1,7 +1,5 @@
-.wrapper {
-  display: flex;
-  width: 70%;
-  justify-content: space-between;
-  align-items: center;
-  margin: 5px auto;
+.wrapper:after {
+  height: 15px;
+  display: table-row;
+  content: "";
 }
