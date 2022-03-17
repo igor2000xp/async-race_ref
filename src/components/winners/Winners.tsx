@@ -9,6 +9,7 @@ import {getWinnerCarsThunk} from "../../bll/reducer/thunk";
 import {IWinner} from "../../types/typesAPI";
 import Footer from "../UI/Footer";
 import { WINNER } from '../../bll/reducer/actionConstant';
+import TableHeader from "./winners-table-header/TableHeader";
 
 const Winners = () => {
     const currentPage = useSelector<RootStoreType, number>(state => state.reducer.winnerPage);
@@ -22,14 +23,17 @@ const Winners = () => {
     return (<div className={style.wrapper}>
         <Header />
         <WinnersHeader />
-        <ul className={style.wrapper}>
+        <table className={style.wrapper}>
+            <TableHeader />
+            <tbody>
             {winnerCars?.map(winner => <WinnerSlot
                 key={String(winner.id)}
                 id={winner.id}
                 wins={winner.wins}
                 time={winner.time}
             />)}
-        </ul>
+            </tbody>
+        </table>
         <Footer switchPage={WINNER} />
     </div>);
 };
