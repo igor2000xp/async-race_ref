@@ -6,7 +6,8 @@ import {IEngine, ISuccess} from "../types/typesAPI";
 export const drive = (id: number):Promise<ISuccess> => {
   return instance.patch(`${engine}?id=${id}&status=drive`,)
     .then(res => res.data)
-    .catch(res => res.status !== 200? { success: false }: { ...res })
+    .catch(res => ({ success: false }))
+    // !== 200? { success: false }: { ...res })
 };
 
 export const startEngine = (id: number):Promise<IEngine> => {

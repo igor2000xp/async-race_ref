@@ -16,6 +16,7 @@ const CarListSection:React.FC = () => {
         setCars(res.cars);
       });
   },[pageNumber, carsNumber]);
+  console.log('render');
 
   return (
     <section id='car-list-section'>

@@ -11,8 +11,12 @@ const EngineButtons:React.FC<IProps> = (props) => {
   const buttonA = 'engine-button-A' + props.id;
   const buttonB = 'engine-button-B' + props.id;
 
-  const startButton = () => props.a();
-  const stopButton = () => props.b();
+  const startButton = () => {
+    return props.a();
+  };
+  const stopButton = () => {
+    return props.b();
+  };
 
   return (
     <div className='engine-button'>
