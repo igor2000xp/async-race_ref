@@ -1,13 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from './TableHeader.module.css'
 
-const TableHeader = () => {
+interface ITableHeader {
+    setSorting: ({}: {isASC: string, type: string}) => void
+}
+
+const TableHeader: React.FC<ITableHeader> = ({setSorting}) => {
+    const [isACS, setIsASC] = useState<boolean>(true);
 
     const sorting = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const field = event.currentTarget.textContent?.toLowerCase();
-        console.log(field)
+        setSorting({
+            isASC: isACS ? 'ASC' : 'DESC',
+            type: field as string,
+        });
+        setIsASC(!isACS);
     }
-
     return (
         <thead className={styles.wrapper}>
         <tr>

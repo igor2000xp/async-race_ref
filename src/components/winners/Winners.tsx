@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import WinnerSlot from './winner-slot/WinnerSlot';
 import style from './Winners.module.css';
 import Header from '../UI/header';
@@ -16,15 +16,20 @@ const Winners = () => {
     const winnerCars = useSelector<RootStoreType, Array<IWinner> | null>( state => state.reducer.winnerCars);
     const dispatch = useDispatch();
 
+    const [sortingOPT, setSorting] = useState<{isASC: string, type: string}>({
+        isASC: "ASC",
+        type: "wins",
+    })
+
     useEffect(() => {
-        dispatch(getWinnerCarsThunk(currentPage));
-    }, [currentPage]);
+        dispatch(getWinnerCarsThunk(currentPage, sortingOPT));
+    }, [currentPage, sortingOPT]);
 
     return (<div className={style.wrapper}>
         <Header />
         <WinnersHeader />
         <table className={style.tableWrapper}>
-            <TableHeader />
+            <TableHeader setSorting={setSorting}/>
             <tbody>
             {winnerCars?.map(winner => <WinnerSlot
                 key={String(winner.id)}

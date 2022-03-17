@@ -11,9 +11,9 @@ export function getCarsThunk(id:number) {
   }
 }
 
-export function getWinnerCarsThunk(page: number) {
+export function getWinnerCarsThunk(page: number, sortingOPT: {isASC: string, type: string}) {
   return (dispatch: Dispatch) => {
-    getWinners(page)
+    getWinners(page, sortingOPT)
         .then(res => {
           const {totalCount, winners} = res;
           dispatch(setWinnerCars(winners));
