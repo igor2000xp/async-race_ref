@@ -8,14 +8,23 @@ interface ITableHeader {
 
 const TableHeader: React.FC<ITableHeader> = ({setSorting}) => {
     const [isACS, setIsASC] = useState<boolean>();
+    const [currentButton, setCurrentButton] = useState<string>()
 
     const sorting = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-        const field = event.currentTarget.textContent?.toLowerCase();
+        const element = event.currentTarget;
+        const field = element.textContent?.toLowerCase();
         setSorting({
             order: isACS ? sortingASC : sortingDESC,
             type: field as SortingType,
         });
         setIsASC(!isACS);
+        setCurrentButton(field);
+    }
+
+    const fields = [];
+
+    for (let type in SortingType) {
+        fields.push(type)
     }
 
     return (
@@ -23,15 +32,25 @@ const TableHeader: React.FC<ITableHeader> = ({setSorting}) => {
         <tr>
             <th>NAME</th>
             <th />
-            <th>
-                <button onClick={sorting}>{SortingType.id.toUpperCase()}</button>
-            </th>
-            <th>
-                <button onClick={sorting}>{SortingType.wins.toUpperCase()}</button>
-            </th>
-            <th>
-                <button onClick={sorting}>{SortingType.time.toUpperCase()}</button>
-            </th>
+            {fields.map( (el) => {
+                return (
+                    <th key={el}>
+                        <button
+                            onClick={sorting}
+                            className={currentButton === el ? styles.checkedButton : styles.button}
+                        >
+                            {el.toUpperCase()}
+                        </button>
+                        {
+                            currentButton === el
+                                ? isACS
+                                    ? <> &uarr;</>
+                                    : <> &darr;</>
+                                : <></>
+                        }
+                    </th>
+                )
+                })}
         </tr>
         </thead>
     );
