@@ -4,21 +4,24 @@ import {SortingOrder, SortingType} from '../../../constantsAPI/constantsAPI';
 import {useDispatch} from 'react-redux';
 import {setSortingOption} from '../../../bll/reducer/actions';
 
-const TableHeader = () => {
-    const [isACS, setIsASC] = useState<boolean>();
-    const [currentButton, setCurrentButton] = useState<string>();
-    const dispatch = useDispatch();
+interface ITableHeader {
+    type: SortingType
+}
 
+const TableHeader: React.FC<ITableHeader> = ({type}) => {
+    const [isACS, setIsASC] = useState<boolean>();
+    const [currentType, setCurrentType] = useState<SortingType>(type);
+    const dispatch = useDispatch();
 
     const sorting = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const element = event.currentTarget;
-        const field = element.textContent?.toLowerCase();
+        const type = element.textContent?.toLowerCase() as SortingType;
         dispatch(setSortingOption({
             order: isACS ? SortingOrder.ASC : SortingOrder.DESC,
-            type: field as SortingType,
+            type,
         }));
         setIsASC(!isACS);
-        setCurrentButton(field);
+        setCurrentType(type);
     }
 
     const fields = [];
@@ -37,12 +40,12 @@ const TableHeader = () => {
                     <th key={el}>
                         <button
                             onClick={sorting}
-                            className={currentButton === el ? styles.checkedButton : styles.button}
+                            className={currentType === el ? styles.checkedButton : styles.button}
                         >
                             {el.toUpperCase()}
                         </button>
                         {
-                            currentButton === el
+                            currentType === el
                                 ? isACS
                                     ? <> &uarr;</>
                                     : <> &darr;</>
