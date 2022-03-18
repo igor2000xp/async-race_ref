@@ -1,22 +1,22 @@
 import React, {useState} from "react";
 import styles from './TableHeader.module.css'
-import {sortingASC, sortingDESC, SortingType} from "../../../constantsAPI/constantsAPI";
+import {SortingOrder, SortingType} from "../../../constantsAPI/constantsAPI";
+import {useDispatch} from "react-redux";
+import {setSortingOption} from "../../../bll/reducer/actions";
 
-interface ITableHeader {
-    setSorting: ({}: {type: SortingType, order: string}) => void
-}
-
-const TableHeader: React.FC<ITableHeader> = ({setSorting}) => {
+const TableHeader = () => {
     const [isACS, setIsASC] = useState<boolean>();
     const [currentButton, setCurrentButton] = useState<string>()
+    const dispatch = useDispatch()
+
 
     const sorting = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
         const element = event.currentTarget;
         const field = element.textContent?.toLowerCase();
-        setSorting({
-            order: isACS ? sortingASC : sortingDESC,
+        dispatch(setSortingOption({
+            order: isACS ? SortingOrder.ASC : SortingOrder.DESC,
             type: field as SortingType,
-        });
+        }))
         setIsASC(!isACS);
         setCurrentButton(field);
     }

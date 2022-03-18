@@ -5,10 +5,12 @@ export const garage = `/garage`;
 export const limitCars = 7;
 export const page = 1;
 export const limitPageWinners = 10;
-export const sortingASC = 'ASC';
-export const sortingDESC = 'DESC';
+export enum SortingOrder {
+    ASC = 'ASC',
+    DESC = 'DESC',
+}
 export enum SortingType {
     id = 'id',
     wins = 'wins',
-    time = 'time'
+    time = 'time',
 }
