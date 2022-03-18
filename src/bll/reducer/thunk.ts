@@ -1,8 +1,8 @@
-import {getCar} from "../../dal/GarageAPI";
-import {getWinners} from "../../dal/WinnersAPI";
-import {setWinnerCars, setWinnerTotalCount} from "./actions";
-import {Dispatch} from "redux";
-import {SortingType} from "../../constantsAPI/constantsAPI";
+import {getCar} from '../../dal/GarageAPI';
+import {getWinners} from '../../dal/WinnersAPI';
+import {setWinnerCars, setWinnerTotalCount} from './actions';
+import {Dispatch} from 'redux';
+import {SortingType} from '../../constantsAPI/constantsAPI';
 
 export function getCarsThunk(id:number) {
   // const car = getCar(id);
@@ -19,6 +19,6 @@ export function getWinnerCarsThunk(page: number, sortingOPT: {type: SortingType,
           const {totalCount, winners} = res;
           dispatch(setWinnerCars(winners));
           dispatch(setWinnerTotalCount(totalCount));
-        })
+        });
   }
 }

@@ -1,13 +1,13 @@
-import React, {useState} from "react";
+import React, {useState} from 'react';
 import styles from './TableHeader.module.css'
-import {SortingOrder, SortingType} from "../../../constantsAPI/constantsAPI";
-import {useDispatch} from "react-redux";
-import {setSortingOption} from "../../../bll/reducer/actions";
+import {SortingOrder, SortingType} from '../../../constantsAPI/constantsAPI';
+import {useDispatch} from 'react-redux';
+import {setSortingOption} from '../../../bll/reducer/actions';
 
 const TableHeader = () => {
     const [isACS, setIsASC] = useState<boolean>();
-    const [currentButton, setCurrentButton] = useState<string>()
-    const dispatch = useDispatch()
+    const [currentButton, setCurrentButton] = useState<string>();
+    const dispatch = useDispatch();
 
 
     const sorting = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
@@ -16,7 +16,7 @@ const TableHeader = () => {
         dispatch(setSortingOption({
             order: isACS ? SortingOrder.ASC : SortingOrder.DESC,
             type: field as SortingType,
-        }))
+        }));
         setIsASC(!isACS);
         setCurrentButton(field);
     }
@@ -24,7 +24,7 @@ const TableHeader = () => {
     const fields = [];
 
     for (let type in SortingType) {
-        fields.push(type)
+        fields.push(type);
     }
 
     return (

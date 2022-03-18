@@ -1,7 +1,7 @@
 import {ResultsActions} from './actions';
 import ActionConstant from './actionConstant';
-import {ISortingOptions, IWinner} from "../../types/typesAPI";
-import {SortingOrder, SortingType} from "../../constantsAPI/constantsAPI";
+import {ISortingOptions, IWinner} from '../../types/typesAPI';
+import {SortingOrder, SortingType} from '../../constantsAPI/constantsAPI';
 
 interface IState {
   garagePage:number;

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import styles from "./WinnerSlot.module.css";
+import styles from './WinnerSlot.module.css';
 import { ReactComponent as Logo } from '../../UI/GarageComponent/carsImg/auto.svg';
-import {getCar} from "../../../dal/GarageAPI";
+import {getCar} from '../../../dal/GarageAPI';
 
 interface IWinnerSlot {
     id: number,

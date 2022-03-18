@@ -1,5 +1,5 @@
-import ActionConstant from "./actionConstant";
-import {ISortingOptions, IWinner} from "../../types/typesAPI";
+import ActionConstant from './actionConstant';
+import {ISortingOptions, IWinner} from '../../types/typesAPI';
 
 export type ResultsActions = ReturnType<typeof setGaragePage>
   | ReturnType<typeof setGarageCars>
