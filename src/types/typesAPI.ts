@@ -1,3 +1,5 @@
+import {SortingOrder, SortingType} from "../constantsAPI/constantsAPI";
+
 export interface ICar {
   id: number
   name: string,
@@ -28,4 +30,9 @@ export interface ICars {
 
 export interface ISuccess {
     success: true;
+}
+
+export interface ISortingOptions {
+  type: SortingType,
+  order: SortingOrder,
 }

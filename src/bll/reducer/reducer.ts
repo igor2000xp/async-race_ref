@@ -1,6 +1,7 @@
 import {ResultsActions} from './actions';
 import ActionConstant from './actionConstant';
-import {IWinner} from "../../types/typesAPI";
+import {ISortingOptions, IWinner} from '../../types/typesAPI';
+import {SortingOrder, SortingType} from '../../constantsAPI/constantsAPI';
 
 interface IState {
   garagePage:number;
@@ -10,6 +11,7 @@ interface IState {
   winnerTotalCount: number
   winnerID:number;
   lastTimeWinner:number;
+  sortingOptions: ISortingOptions
 }
 
 const stateInitiation:IState = {
@@ -20,6 +22,7 @@ const stateInitiation:IState = {
   winnerTotalCount: 0,
   winnerID:1,
   lastTimeWinner:0,
+  sortingOptions: {type: SortingType.wins, order: SortingOrder.ASC}
 }
 
 export default function reducer(state = stateInitiation, action:ResultsActions):IState {
@@ -38,6 +41,8 @@ export default function reducer(state = stateInitiation, action:ResultsActions):
       return {...state, winnerID: action.winnerID}
     case ActionConstant.LAST_TIME_WINNER:
       return {...state, lastTimeWinner: action.lastTime}
+    case ActionConstant.SET_SORTING_OPTION:
+      return {...state, sortingOptions: {...action.sortingOption}}
     default: return state;
   }
 }
