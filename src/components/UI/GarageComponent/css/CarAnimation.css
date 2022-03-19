@@ -1,15 +1,6 @@
-/*.car {*/
-/*  position: relative;*/
-/*  animation-name: animeCarFrame;*/
-/*  animation-timing-function: linear;*/
-/*  animation-direction: normal;*/
-/*  animation-play-state: running;*/
-/*  animation-fill-mode: forwards;*/
-/*}*/
 .animatedCar-paused {
   animation-play-state:paused;
 }
-
 @keyframes animeCarFrame {
   0% {
     left: 0;
@@ -18,23 +9,13 @@
     left: 80vw;
   }
 }
-
-.car.entering {
+.car {
   position: relative;
   animation-name: animeCarFrame;
   animation-timing-function: linear;
   animation-direction: normal;
-  animation-play-state: running;
+  /*animation-play-state: running;*/
   animation-fill-mode: forwards;
-  animation-duration: 2s;
+  /*animation-duration: 2s;*/
 }
-.car.entered {
-  position: relative;
-  left: 80vw;
-}
-.car.exiting {
-  left: 80vw;
-}
-.car.exited {
-  left: 80vw;
-}
+

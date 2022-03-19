@@ -12,7 +12,7 @@ interface IProps {
 }
 
 const CarFullTrack:React.FC<IProps> = (props) => {
-  const [animationStart, setAnimationStart] = useState(false);
+  const [animationStart, setAnimationStart] = useState<boolean>();
   // console.log(animationStart);
   // const nodeRef = useRef(null);
   // let animationStart = false;

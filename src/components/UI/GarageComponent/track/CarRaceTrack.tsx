@@ -1,90 +1,47 @@
-import React, {useState, useRef, useEffect} from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import '../css/CarListSection.css';
 import '../css/CarAnimation.css';
 import { ReactComponent as Logo } from '../carsImg/auto.svg';
-import {Transition} from 'react-transition-group';
-import {drive, startEngine} from '../../../../dal/EngineAPI';
-import {ISuccess} from '../../../../types/typesAPI';
+import { drive, startEngine } from '../../../../dal/EngineAPI';
 
 interface IProps {
   id:number;
   color:string;
-  animationStart:boolean;
+  animationStart?:boolean;
 }
 
 const CarRaceTrack:React.FC<IProps> = (props) => {
-  // const carID = 'car' + props.id;
-  // const carClassID = 'car-img car-img-animation' + props.id;
-  const carClassID = 'car car-img ';
-  const nodeRef = useRef(null);
-  // const [animationStartState, setAnimationStartState] = useState(false);
-  let raceTimeMs:Promise<number>;
-  // let stop500:Promise<ISuccess>;
-
-  const [stop500, setStop500] = useState(false);
+  // const nodeRef = useRef(null);
+  const [raceTimeMs, setRaceTimeMs] = useState(130000);
+  const [start, setStart] = useState(false);
+  const [stop500, setStop500] = useState(true);
+  const carClassID = `${start? 'car': ''} car-img `;
 
   useEffect(() => {
     if (props.animationStart) {
-      raceTimeMs = startEngine(props.id)
-        .then(res => {
-          console.log(raceTimeMs);
-          return Math.round(res.distance / res.velocity);
-        });
+        startEngine(props.id)
+            .then(res => {
+              setRaceTimeMs(Math.round(res.distance / res.velocity));
+              setStart(true);
+      })
       drive(props.id)
-        .then(res => setStop500(res.success))
-        .catch(res => setStop500(res.status));
-        // .then(res => res.success)
-        // .catch(res => {
-        //   if ( res.success ) return false;
-        // });
+        .then(res => setStop500(res.success));
     }
+      if (!props.animationStart && typeof props.animationStart !== 'undefined') {
+        console.log('else');
+        setStop500(true);
+        setStart(false);
+      }
   },[props.animationStart]);
 
-  console.log(stop500);
-
-  // const [raceTimeMs, setRaceTimeMs] = useState(10000);
-  // setAnimationStartState(props.animationStart);
-  // if (animationStartState) {
-  //   raceTimeMs = startEngine(props.id)
-  //     .then(res => {
-  //       return Math.round(res.distance / res.velocity);
-  // });
-
-
-
-  // setTimeout(() => {
-  //   // startRaceAnimation(id);
-  //   stop500 = drive(props.id)
-  //     // .then(res => {
-  //     //   return !res.success;
-  //     // })
-  //     .catch(res => res.status);
-  // }, 10);
-
-  // const stop500 = drive(props.id)
-  //   // .then(res => {
-  //   //   return !res.success;
-  //   // })
-  //   .catch(res => res.status);
-
-
-
-
-
-  // console.log(raceTimeMs);
-  // console.log(stop500);
-
-  // const [animationStart, setAnimationStart] = useState(false);
-
+  console.log('stop500 = ', stop500);
+  // console.log('raceTimeMs = ', raceTimeMs);
+  // console.log('animationStart = ', props.animationStart);
+  // console.log('start = ', start);
   return (
-    <Transition
-      in={props.animationStart}
-      timeout={13000}
-      classNames="animatedCar"
-      nodeRef={nodeRef}
-    >
-      {(state) => {
-        return <div ref={nodeRef}  className={carClassID + state}>
+       <div className={carClassID} style={{animationDuration:`${raceTimeMs}ms`,
+        animationPlayState:`${stop500 && start? 'running': 'paused'}`
+        }}>
           <Logo
             width={200}
             height={30}
@@ -93,19 +50,6 @@ const CarRaceTrack:React.FC<IProps> = (props) => {
             strokeWidth={250}
           />
         </div>
-      }}
-    </Transition>
-          // <div className={carClassID}>
-          //   <Logo
-          //     width={200}
-          //     height={30}
-          //     fill={props.color}
-          //     stroke='white'
-          //     strokeWidth={250}
-          //   />
-          // </div>
-    // </div>
-
   );
 };
 
