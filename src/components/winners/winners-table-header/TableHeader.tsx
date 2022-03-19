@@ -6,14 +6,17 @@ import {setSortingOption} from '../../../bll/reducer/actions';
 
 interface ITableHeader {
     type: SortingType
+    order: SortingOrder
 }
 
-const TableHeader: React.FC<ITableHeader> = ({type}) => {
-    const [isACS, setIsASC] = useState<boolean>();
+const TableHeader: React.FC<ITableHeader> = ({type, order}) => {
+    debugger
+    const [isACS, setIsASC] = useState<boolean>(order !== SortingOrder.ASC);
     const [currentType, setCurrentType] = useState<SortingType>(type);
     const dispatch = useDispatch();
 
     const sorting = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+        debugger
         const element = event.currentTarget;
         const type = element.textContent?.toLowerCase() as SortingType;
         dispatch(setSortingOption({

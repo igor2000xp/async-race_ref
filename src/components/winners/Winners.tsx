@@ -25,7 +25,7 @@ const Winners = () => {
         <Header />
         <WinnersHeader />
         <table className={style.tableWrapper}>
-            <TableHeader type={sortingOptions.type}/>
+            <TableHeader type={sortingOptions.type} order={sortingOptions.order}/>
             <tbody>
             {winnerCars?.map(winner => <WinnerSlot
                 key={String(winner.id)}
