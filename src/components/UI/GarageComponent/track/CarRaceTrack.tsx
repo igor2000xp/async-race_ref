@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../css/CarListSection.css';
 import '../css/CarAnimation.css';
 import { ReactComponent as Logo } from '../carsImg/auto.svg';
@@ -24,17 +24,20 @@ const CarRaceTrack:React.FC<IProps> = (props) => {
               setRaceTimeMs(Math.round(res.distance / res.velocity));
               setStart(true);
       })
-      drive(props.id)
-        .then(res => setStop500(res.success));
+      setTimeout(() => {
+        drive(props.id)
+          .then(res => setStop500(res.success));
+
+      }, 10)
+
     }
       if (!props.animationStart && typeof props.animationStart !== 'undefined') {
-        console.log('else');
         setStop500(true);
         setStart(false);
       }
   },[props.animationStart]);
 
-  console.log('stop500 = ', stop500);
+  // console.log('stop500 = ', stop500);
   // console.log('raceTimeMs = ', raceTimeMs);
   // console.log('animationStart = ', props.animationStart);
   // console.log('start = ', start);

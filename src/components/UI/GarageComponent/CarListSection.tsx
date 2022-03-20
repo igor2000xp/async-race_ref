@@ -5,7 +5,11 @@ import {RootStoreType} from '../../../bll/store';
 import {ICar} from '../../../types/typesAPI';
 import {getCars} from '../../../dal/GarageAPI';
 
-const CarListSection:React.FC = () => {
+interface IProps {
+  startRace:boolean;
+}
+
+const CarListSection:React.FC<IProps> = (props) => {
   const pageNumber = useSelector<RootStoreType, number>((state) => state.reducer.garagePage);
   const carsNumber = useSelector<RootStoreType, number>((state) => state.reducer.garageCars);
   const [cars, setCars] = useState<ICar[]>();
@@ -16,13 +20,12 @@ const CarListSection:React.FC = () => {
         setCars(res.cars);
       });
   },[pageNumber, carsNumber]);
-  console.log('render');
 
   return (
     <section id='car-list-section'>
       {
         cars?.map((e) => {
-          return <UnionDetailsOfTrack key={e.id} id={e.id} name={e.name} color={e.color} />
+          return <UnionDetailsOfTrack key={e.id} id={e.id} name={e.name} color={e.color} startRace={props.startRace} />
       })}
     </section>
   );

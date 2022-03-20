@@ -15,10 +15,7 @@
   border-bottom: 2px white dashed;
   margin: 0 0 1vh 0;
 }
-.engine-button__item:hover {
-  background-color: rgba(162, 250, 135, 0.466);
-}
-.engine-button button{
+.engine-button__item{
   width: 2.5vh;
   height: 2.5vh;
   padding-inline: 0;
@@ -31,6 +28,14 @@
   border-radius: 0.6vh;
   border-color: chartreuse;
   cursor: pointer;
+}
+.engine-button__item:hover {
+  background-color: rgba(162, 250, 135, 0.466);
+}
+.active {
+  background-color: rgba(248, 246, 246, 0.6);
+  border-color: #ffffff;
+
 }
 .car-race-truck {
   display: flex;

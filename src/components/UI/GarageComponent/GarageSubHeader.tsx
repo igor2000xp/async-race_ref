@@ -5,9 +5,15 @@ import {useSelector} from "react-redux";
 import store, {RootStoreType} from '../../../bll/store';
 import { setGarageCars} from '../../../bll/reducer/actions';
 
-const GarageSubHeader:React.FC = () => {
+interface IProps {
+  start: () => void;
+  stop: () => void;
+}
+
+const GarageSubHeader:React.FC<IProps> = (props) => {
   const carsNumber = useSelector<RootStoreType, number>((state) => state.reducer.garageCars);
   const [carColor, setCarColor] = useState<string>('#ff0000');
+  let isStartRace = false;
 
   const inputNewCarName = useRef<HTMLInputElement>(null);
   const inputCarColor = useRef<HTMLInputElement>(null);
@@ -16,7 +22,11 @@ const GarageSubHeader:React.FC = () => {
   let countRender = 0;
   useEffect(() => {
     // console.log()
-  }, [carColor])
+  }, [carColor]);
+
+  useEffect(() => {
+
+  },[isStartRace]);
 
   const colorHandler = () => {
     setCarColor(inputCarColor.current ? inputCarColor.current.value : '#ff0000')
@@ -29,6 +39,15 @@ const GarageSubHeader:React.FC = () => {
           carsNumber + 1
         ));
       });
+  }
+
+  const startRace = () => {
+    isStartRace = true;
+    return props.start();
+  }
+  const resetRace = () => {
+    isStartRace = false;
+    return props.stop();
   }
 
   return (
@@ -58,8 +77,8 @@ const GarageSubHeader:React.FC = () => {
       </section>
 
       <section className="main-buttons__block create cars-control">
-        <button id="race" className="floating-button">RACE</button>
-        <button id="reset" className="floating-button">RESET</button>
+        <button onClick={startRace} id="race" className="floating-button">RACE</button>
+        <button onClick={resetRace} id="reset" className="floating-button">RESET</button>
         <button id="generate-cars" className="floating-button input__button input-cars__button">GENERATE 100 CARS</button>
       </section>
 
