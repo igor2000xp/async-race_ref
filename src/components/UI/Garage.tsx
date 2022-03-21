@@ -9,10 +9,12 @@ import store, { RootStoreType } from '../../bll/store';
 import { setGarageCars } from '../../bll/reducer/actions';
 import {getCars} from '../../dal/GarageAPI';
 import { GARAGE } from '../../bll/reducer/actionConstant';
+import {IResult} from "./GarageComponent/track/CarRaceTrack";
 
 const Garage = () => {
   const pageNumber = useSelector<RootStoreType, number>((state) => state.reducer.garagePage);
   const carsNumber = useSelector<RootStoreType, number>((state) => state.reducer.garageCars);
+  const cars = useSelector<RootStoreType, Array<IResult>>((state) => state.reducer.winnerResult);
   const [start, setStart] = useState(false);
 
   useEffect(() => {

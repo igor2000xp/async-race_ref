@@ -2,6 +2,8 @@ import {ResultsActions} from './actions';
 import ActionConstant from './actionConstant';
 import {ISortingOptions, IWinner} from '../../types/typesAPI';
 import {SortingOrder, SortingType} from '../../constantsAPI/constantsAPI';
+import {IResult} from '../../components/UI/GarageComponent/track/CarRaceTrack';
+import actionConstant from "./actionConstant";
 
 interface IState {
   garagePage:number;
@@ -9,7 +11,7 @@ interface IState {
   winnerPage:number;
   winnerCars: Array<IWinner> | null;
   winnerTotalCount: number
-  winnerID:number;
+  winnerResult:Array<IResult>;
   lastTimeWinner:number;
   sortingOptions: ISortingOptions
 }
@@ -20,7 +22,7 @@ const stateInitiation:IState = {
   winnerPage:1,
   winnerCars: null,
   winnerTotalCount: 0,
-  winnerID:1,
+  winnerResult:[],
   lastTimeWinner:0,
   sortingOptions: {type: SortingType.wins, order: SortingOrder.ASC}
 }
@@ -37,8 +39,11 @@ export default function reducer(state = stateInitiation, action:ResultsActions):
       return {...state, winnerCars: [...action.winnerCars]}
     case ActionConstant.WINNER_TOTAL_COUNT:
       return {...state, winnerTotalCount: action.totalCount}
-    case ActionConstant.WINNER_ID:
-      return {...state, winnerID: action.winnerID}
+    case ActionConstant.WINNER_RESULT:
+      // console.log(action.winnerResult);
+      return {...state, winnerResult: [...state.winnerResult, action.winnerResult]}
+    case  ActionConstant.CLEAN_WINNER_RESULT:
+      return {...state, winnerResult: []}
     case ActionConstant.LAST_TIME_WINNER:
       return {...state, lastTimeWinner: action.lastTime}
     case ActionConstant.SET_SORTING_OPTION:

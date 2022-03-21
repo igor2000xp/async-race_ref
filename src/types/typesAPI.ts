@@ -29,7 +29,7 @@ export interface ICars {
 }
 
 export interface ISuccess {
-    success: true;
+    success: boolean;
 }
 
 export interface ISortingOptions {
