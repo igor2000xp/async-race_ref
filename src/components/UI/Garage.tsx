@@ -22,10 +22,10 @@ const Garage = () => {
   const [stopWinner, setStopWinner] = useState<boolean>();
   const dispatch = useDispatch();
   const winner = useRef<IResult>();
-
-  let activeWinner = false;
-  let winnerName = '';
-  let winnerTime = 0;
+  const activeWinner = useRef(false);
+  const winnerName = useRef('');
+  const winnerTime = useRef(0);
+  const [delayWinnerWindow, setDelayWinnerWindow] = useState<boolean>(false);
 
   useEffect(() => {
     getCars(pageNumber)
@@ -39,21 +39,18 @@ const Garage = () => {
     if (start) {
       setTimeout(() => {
         setStopWinner(true);
-        console.log(stopWinner);
-      },12000);
-      setTimeout(() => {
-        setStopWinner(false);
-      },12100);
+      },10000);
     }
   },[start]);
 
   useEffect(() => {
     if (stopWinner === true) {
-      console.log(cars);
       const win = showRaceResult(cars);
-      activeWinner = true;
-      winnerName = String(win.id);
+      activeWinner.current = true;
+      winnerName.current = String(win.id);
+      winnerTime.current = win.raceTime;
       setWinnerResult(win);
+      //!!!!!!!!! function to base
       dispatch(cleanWinnersResult());
     }
   },[stopWinner]);
@@ -65,11 +62,26 @@ const Garage = () => {
     setStart(false);
   };
 
+  let isActive = activeWinner.current;
+  useEffect(() => {
+    if (stopWinner) {
+      setTimeout(() => {
+        setDelayWinnerWindow(true);
+        activeWinner.current = true;
+      },0);
+      setTimeout(() => {
+        setDelayWinnerWindow(false);
+        activeWinner.current = false;
+        setStopWinner(false);
+      },4000);
+    }
+  },[isActive])
+
   return (
     <div className='page-wrapper'>
       <Header />
       <div className='control'>
-        <WinnerScreen activeWinner={activeWinner} winnerName={winnerName} winnerTime={winnerTime} />
+        <WinnerScreen activeWinner={stopWinner? stopWinner: false} winnerName={winnerName.current} winnerTime={winnerTime.current} />
         <GarageSubHeader start={startRace} stop={resetRace} />
         <GarageTopic page={pageNumber} garage={carsNumber} />
         <CarListSection startRace={start} />

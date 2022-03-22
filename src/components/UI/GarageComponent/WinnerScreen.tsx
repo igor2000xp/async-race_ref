@@ -10,10 +10,14 @@ interface IProps {
 
 const WinnerScreen:React.FC<IProps> = (props) => {
   const [activeWindow, setActiveWindow] = useState(props.activeWinner);
-  let active = activeWindow? ' active': '';
+  let active = props.activeWinner? ' active': '';
+
+  const winnerString =`Winner: ${props.winnerName}, time: ${props.winnerTime}`;
   return (
-    <div className={classes.Winner + active}>
-      <h2>`Winner: ${props.winnerName} time: ${props.winnerTime}`</h2>
+    <div className={'winner' + active}>
+      <h2>
+        {winnerString}
+      </h2>
     </div>
   );
 };

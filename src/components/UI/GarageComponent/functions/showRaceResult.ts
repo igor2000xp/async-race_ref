@@ -10,6 +10,5 @@ export default function showRaceResult(cars: IResult[]):IResult {
     }
     return minTime;
   });
-  console.log(winner);
   return winner;
 }
