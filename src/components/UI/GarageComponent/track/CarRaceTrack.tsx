@@ -57,7 +57,7 @@ const CarRaceTrack:React.FC<IProps> = (props) => {
             setStop500(res.success);
             if (raceTime.current.raceTime !== 0 && err500) {
               dispatch(winnerResult(raceTime.current));
-              console.log(raceTime.current);
+              // console.log(raceTime.current);
             }
           });
       }, 10)
