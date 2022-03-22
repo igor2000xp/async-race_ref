@@ -1,0 +1,21 @@
+.animatedCar-paused {
+  animation-play-state:paused;
+}
+@keyframes animeCarFrame {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 80vw;
+  }
+}
+.car {
+  position: relative;
+  animation-name: animeCarFrame;
+  animation-timing-function: linear;
+  animation-direction: normal;
+  /*animation-play-state: running;*/
+  animation-fill-mode: forwards;
+  /*animation-duration: 2s;*/
+}
+

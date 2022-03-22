@@ -1,0 +1,74 @@
+.page-wrapper {
+  width: 100%;
+  height: 100vh;
+  background-color: #070302;
+}
+.main-buttons__block {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 4vh;
+}
+.create {
+  margin: 0.4vh 0 0.4vh 0;
+}
+.control {
+  padding: 0.5vh 0.7vh 0 0.7vh;
+}
+.floating-button {
+  text-decoration: none;
+  display: inline-block;
+  width: 9vh;
+  height: 3.2vh;
+  line-height: 1vh;
+  border-radius: 0.5vh;
+  margin: 0.1vh 0.2vh;
+  padding: 0;
+  /* margin: 0; */
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1vh;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.1vh;
+  font-weight: 600;
+  color: black;
+  background: rgb(190, 235, 177);
+  box-shadow: 0 0.8vw 1vw rgba(0, 0, 0, .1);
+  transition: .3s;
+  cursor: pointer;
+}
+.floating-button:hover {
+  background: #2EE59D;
+  box-shadow: 0 1.2vw 1.8vw rgba(46, 229, 157, .4);
+  color: white;
+  transform: translateY(-0.2vw);
+}
+.input__text {
+  height: 2.5vh;
+  width: 23vh;
+  background-color: white;
+  margin: 0 0.3vw 0 0;
+  font-size: 2.2vh;
+}
+.update-input__text {
+  background-color: silver;
+}
+#color-create {
+  height: 1vw;
+}
+input[type="color"] {
+  inline-size: 4vh;
+  block-size: 13vh;
+  border-width: 1px;
+  padding: 0;
+}
+.input__button {
+  background-color: rgb(157, 211, 255);
+  width: 6vh;
+}
+.input-cars__button {
+  width: 15.7vh;
+}
+#color-create {
+  height: 1vw;
+}

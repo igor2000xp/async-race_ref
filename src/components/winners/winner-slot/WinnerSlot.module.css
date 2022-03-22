@@ -1,0 +1,10 @@
+.wrapper {
+  margin: 5px auto;
+  padding: 0 10px;
+  background-color: rgba(255, 255, 255, 0.26);
+  text-align: center;
+}
+
+.wrapper > td {
+  border-radius: 10px;
+}
